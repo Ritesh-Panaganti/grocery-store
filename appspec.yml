@@ -1,0 +1,25 @@
+version: 0.0
+os: linux
+files: 
+  - source: /grocery.zip
+    destination: /var/app/current
+hooks:
+  BeforeInstall:
+      - location: scripts/clean_instance.sh
+        timeout: 300
+        runas: ubuntu
+  AfterInstall:
+      - location: scripts/python_dependencies.sh
+        timeout: 300
+        runas: ec2-user
+      - location: scripts/nginx.sh
+        timeout: 300
+        runas: ec2-user
+  ApplicationStop:
+      - location: scripts/stop_app.sh
+        timeout: 300
+        runas: ec2-user
+  ApplicationStart:
+      - location: scripts/start_app.sh
+        timeout: 300
+        runas: ec2-user
