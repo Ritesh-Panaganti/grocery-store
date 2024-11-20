@@ -8,9 +8,11 @@ phases:
   build:
     commands:
       - echo "Building the application"
+      - zip -r grocery.zip *
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   files:
-    - '**/*'
+    - grocery.zip
+  discard-paths: yes
