@@ -1,2 +1,2 @@
 # grocery-store
-this project is for grocery store
+This project is for grocery store
